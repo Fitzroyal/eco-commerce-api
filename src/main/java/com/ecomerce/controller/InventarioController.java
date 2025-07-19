@@ -1,6 +1,6 @@
 package com.ecomerce.controller;
 
-import com.ecomerce.assemblers.InventarioModelAssembler; // Importa el Assembler
+import com.ecomerce.assemblers.InventarioModelAssembler;
 import com.ecomerce.model.Inventario;
 import com.ecomerce.service.InventarioService;
 import org.springframework.hateoas.CollectionModel;
@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// Importaciones adicionales para Swagger (si las vas a usar)
+// Importaciones para validación
+import jakarta.validation.Valid;
+
+// Importaciones adicionales para Swagger
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+// @RequestBody de Swagger es diferente al de Spring, no lo uses para el parámetro del método directamente.
+// import io.swagger.v3.oas.annotations.parameters.RequestBody; // <-- No usar este para el parámetro del método
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -68,7 +72,20 @@ public class InventarioController {
                  content = @Content(mediaType = "application/json", schema = @Schema(implementation = Inventario.class)))
     @ApiResponse(responseCode = "400", description = "Solicitud inválida o datos incompletos")
     @PostMapping
-    public ResponseEntity<EntityModel<Inventario>> crear(@RequestBody(description = "Datos del nuevo producto a crear", required = true) Inventario inventario) {
+    public ResponseEntity<EntityModel<Inventario>> crear(
+            // @RequestBody de Swagger es para la documentación, no para el parámetro.
+            // Para el parámetro, usamos el @RequestBody de Spring y @Valid de Jakarta Validation.
+            @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Datos del nuevo producto a crear", required = true,
+                content = @Content(schema = @Schema(implementation = Inventario.class)))
+            @Valid @org.springframework.web.bind.annotation.RequestBody Inventario inventario) { // <-- AQUÍ ESTÁN LAS CORRECCIONES
+
+        // --- LÍNEA DE DEPURACIÓN CRÍTICA ---
+        System.out.println("DEBUG: Inventario recibido - Nombre: " + inventario.getNombreProducto() +
+                           ", Descripcion: " + inventario.getDescripcion() +
+                           ", Precio: " + inventario.getPrecio() +
+                           ", Stock: " + inventario.getStock());
+        // ------------------------------------
+
         Inventario nuevoInventario = inventarioService.guardar(inventario);
         EntityModel<Inventario> inventarioModel = assembler.toModel(nuevoInventario); // Usa el assembler
 

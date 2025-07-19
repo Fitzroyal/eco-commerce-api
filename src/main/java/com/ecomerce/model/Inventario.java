@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.NotBlank; // Importa esta anotación para validación
+import jakarta.validation.constraints.NotNull; // Importa esta anotación para validar que no sea nulo
+import com.fasterxml.jackson.annotation.JsonProperty; // <-- ¡IMPORTACIÓN CRÍTICA!
 
 /**
  * Clase de Modelo (Entidad) para Inventario (o Producto).
@@ -21,15 +24,20 @@ public class Inventario {
     private Long id;
 
     @Column(nullable = false, unique = true) // Nombre del producto: no nulo y único
+    @NotBlank(message = "El nombre del producto no puede estar vacío") // Validación: no nulo y no solo espacios
+    @JsonProperty("nombre") // <-- ¡ANOTACIÓN CLAVE! Mapea el campo 'nombre' del JSON a 'nombreProducto'
     private String nombreProducto;
 
     @Column(nullable = false) // Descripción del producto: no nula
+    @NotBlank(message = "La descripción no puede estar vacía") // Validación: no nulo y no solo espacios
     private String descripcion;
 
     @Column(nullable = false) // Precio del producto: no nulo
+    @NotNull(message = "El precio no puede ser nulo") // Validación: no nulo
     private Double precio;
 
     @Column(nullable = false) // Stock disponible: no nulo
+    @NotNull(message = "El stock no puede ser nulo") // Validación: no nulo
     private Integer stock;
 
     // Puedes añadir más campos según las necesidades de tu e-commerce ecológico:

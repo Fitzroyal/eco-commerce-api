@@ -1,0 +1,146 @@
+{
+    "info": {
+        "_postman_id": "229abdfb-0393-43d5-b3c1-6de5248b0ba8",
+        "name": "Usuario",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "44839598",
+        "_collection_link": "https://diony-6470111.postman.co/workspace/Diony's-Workspace~0d096bca-d218-428b-861a-4c80bb7e8b32/collection/44839598-229abdfb-0393-428b-861a-4c80bb7e8b32?action=share&source=collection_link&creator=44839598"
+    },
+    "item": [
+        {
+            "name": "http://localhost:8080/api/usuarios",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n  \"nombre\": \"Ana\",\r\n  \"apellido\": \"Gonzalez\",\r\n  \"email\": \"ana.gonzalez@example.com\",\r\n  \"password\": \"miClave123\",\r\n  \"telefono\": \"+56912345678\",\r\n  \"direccion\": \"Av. Siempre Viva 123\",\r\n  \"fechaRegistro\": \"2025-06-18\",\r\n  \"fechaNacimiento\": \"1990-05-01\",\r\n  \"genero\": \"Femenino\"\r\n}\r\n",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/usuarios",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "usuarios"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "http://localhost:8080/api/usuarios (POST - Carlos)",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n  \"nombre\": \"Carlos\",\r\n  \"apellido\": \"Ramírez\",\r\n  \"email\": \"carlos.ramirez@example.com\",\r\n  \"password\": \"claveSecreta\",\r\n  \"telefono\": \"+56998765432\",\r\n  \"direccion\": \"Calle Falsa 456\",\r\n  \"fechaRegistro\": \"2025-06-18\",\r\n  \"fechaNacimiento\": \"1985-09-15\",\r\n  \"genero\": \"Masculino\"\r\n}\r\n",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/usuarios",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "usuarios"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "http://localhost:8080/api/usuarios (GET - Todos)",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n  \"nombre\": \"Carlos\",\r\n  \"apellido\": \"Ramírez\",\r\n  \"email\": \"carlos.ramirez@example.com\",\r\n  \"password\": \"claveSecreta\",\r\n  \"telefono\": \"+56998765432\",\r\n  \"direccion\": \"Calle Falsa 456\",\r\n  \"fechaRegistro\": \"2025-06-18\",\r\n  \"fechaNacimiento\": \"1985-09-15\",\r\n  \"genero\": \"Masculino\"\r\n}\r\n",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/usuarios",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "usuarios"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "http://localhost:8080/api/usuarios/{id} (GET - Por ID)",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n  \"nombre\": \"Carlos\",\r\n  \"apellido\": \"Ramírez\",\r\n  \"email\": \"carlos.ramirez@example.com\",\r\n  \"password\": \"claveSecreta\",\r\n  \"telefono\": \"+56998765432\",\r\n  \"direccion\": \"Calle Falsa 456\",\r\n  \"fechaRegistro\": \"2025-06-18\",\r\n  \"fechaNacimiento\": \"1985-09-15\",\r\n  \"genero\": \"Masculino\"\r\n}\r\n",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/usuarios/2",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "usuarios",
+                        "2"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}
